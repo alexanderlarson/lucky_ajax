@@ -10,6 +10,7 @@ post '/rolls' do
   value = params[:value] ? params[:value].to_i : nil
 
   @roll = value ? Roll.create({ value: value }) : Roll.create
-
-  erb :index, layout: !request.xhr?
+  if request.xhr?
+    erb :_die_partial, layout: false
+  end
 end

@@ -6,10 +6,11 @@ $(document).ready(function() {                          //1
       var url = $(this).attr('action')
       var random = Math.floor(Math.random() * 6) + 1;   //4
       var data = {value: random}
-      
-    $.post(url, data, function(respond) {               //5
+
+    $.post('/rolls', data, function(respond) {               //5
       console.log(respond);
-    $('#die').attr('src').replaceWith(respond);
+
+    $('#die').html(respond);
     });
   });
 });
